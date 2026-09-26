@@ -46,6 +46,13 @@
             // No control access
             #endregion
 
+            #region 2st answer point b
+            Shipment shipment01 = new Shipment();
+            shipment01.Description = "Phone";
+            shipment01.weight = 1.0;
+            shipment01.DeliveryFee = 20;
+            #endregion
+
         }
     }
 }
