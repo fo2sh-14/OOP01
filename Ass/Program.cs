@@ -40,6 +40,12 @@
             // if customer01 (or customer02) change ==> another customer02 (or customer01) make same change , bacause are the same address in heap
             #endregion
 
+            #region 2st answer point a
+            // All field are public 
+            // No validation
+            // No control access
+            #endregion
+
         }
     }
 }
