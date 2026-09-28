@@ -6,7 +6,7 @@ namespace Ass
 {
     internal class Customer
     {
-        public string Name;
+        public string? Name;
 
         public override string ToString()
         {

@@ -6,12 +6,19 @@ namespace Ass
 {
     internal struct DeliveryAddress
     {
-        public string City;
-        public string Street;
+        public string City { get; set; }
+        public string Street { get; set; }
+        public int BuildingNumber { get; set; }
 
+        public DeliveryAddress(string city , string street , int buildingNumber)
+        {
+            City = city;
+            Street = street;
+            BuildingNumber = buildingNumber;
+        }
         public override string ToString()
         {
-            return $"City is {City} , Street is {Street}";
+            return $"{BuildingNumber} {Street} ,{City}";
         }
     }
 }

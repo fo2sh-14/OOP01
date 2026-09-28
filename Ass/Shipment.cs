@@ -7,21 +7,74 @@ namespace Ass
 {
     internal struct Shipment
     {
-        public string Description { get; set; }
+        private string TrackingCode;
+        private string Description;
         private double Weight;
-        public decimal DeliveryFee { get; set; }
+        private double DeliveryFee;
+        public DeliveryAddress Destination {  get; set; }
 
-
-        public double weight 
+        public Shipment(string trackingCode)
         {
-            get
-            {
-                return Weight;
-            }
+            TrackingCode = trackingCode;
+            Description = "Unknown";
+            Weight = 1;
+            DeliveryFee = 50;
+            Destination = default;
+        }
+        public Shipment(string trackingCode, string description, double weight, double deliveryFee, DeliveryAddress destination)
+        {
+            TrackingCode = trackingCode;
+            Description = description;
+            Weight = weight;
+            DeliveryFee = deliveryFee;
+            Destination = destination;
+        }
+        public string trackingCode
+        {
+            get { return TrackingCode; }
+
+        }
+        public string description
+        {
+            get { return Description; }
             set
             {
-                Weight = value > 0  ? value : 0; // Validation
+                if (value != null)
+                    Description = value;
             }
         }
+        public double weight
+        {
+            get { return Weight; }
+            set
+            {
+                if (value >= 0)
+                    Weight = value;
+            }
+        }
+        public double deliveryFee
+        {
+            get { return DeliveryFee; }
+            private set
+            {
+                if (value >= 0)
+                    DeliveryFee = value;
+            }
+        }
+
+        public double EstimatedCost()
+        {
+            return DeliveryFee + (Weight * 5);
+        }
+        public void UpdateDeliveryFee(decimal newFee)
+        {
+            if (newFee >= 0)
+                DeliveryFee = (double)newFee;
+        }
+        public override string ToString()
+        {
+            return $"TrackingCode => {TrackingCode} \nDescription => {Description}\nWeight = {Weight}\nDeliveryFee = {DeliveryFee}\nDestination => {Destination}\nEstimatedCost = {EstimatedCost()}";
+        }
+
     }
 }
